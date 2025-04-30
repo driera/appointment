@@ -4,7 +4,8 @@
   "description": "Repo to practice React Test-Driven Development",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "author": "",
   "license": "ISC",
