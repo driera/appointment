@@ -5,3 +5,9 @@ export const Appointment = ({customer}) => {
     <div>{customer.firstName}</div>
   )
 };
+
+export const AppointmentDayView = () => {
+  return (
+    <div id="appointmentDayView"></div>
+  )
+};
