@@ -1,0 +1,14 @@
+{
+  "name": "appointment",
+  "version": "1.0.0",
+  "description": "Repo to practice React Test-Driven Development",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
