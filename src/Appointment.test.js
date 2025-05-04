@@ -1,4 +1,4 @@
-import React, {act} from "react";
+import React, { act } from "react";
 import ReactDOM from "react-dom/client";
 import { Appointment, AppointmentDayView } from "./Appointment"
 
@@ -15,7 +15,7 @@ describe("Appointment", () => {
   });
 
   it("renders the customer first name", () => {
-    const customer = { firstName: "Ashley"};
+    const customer = { firstName: "Ashley" };
 
     render(<Appointment customer={customer} />);
 
@@ -23,7 +23,7 @@ describe("Appointment", () => {
   })
 
   it("renders another customer first name", () => {
-    const customer = { firstName: "Jordan"};
+    const customer = { firstName: "Jordan" };
 
     render(<Appointment customer={customer} />)
 
@@ -33,6 +33,11 @@ describe("Appointment", () => {
 
 describe("AppointmentDayView", () => {
   let container;
+  const today = new Date();
+  const twoAppointments = [
+    { startsAt: today.setHours(12, 0) },
+    { startsAt: today.setHours(13, 0) },
+  ]
 
   beforeEach(() => {
     container = document.createElement("div");
@@ -47,5 +52,27 @@ describe("AppointmentDayView", () => {
     render(<AppointmentDayView appointments={[]} />);
 
     expect(document.querySelector("div#appointmentDayView")).not.toBeNull();
+  });
+
+  it("renders an ordered list to display appointments", () => {
+    render(<AppointmentDayView appointments={[]} />);
+
+    const listElements = document.querySelector("ol");
+    expect(listElements).not.toBeNull();
+  });
+
+  it("renders a list item for each appointment", () => {
+    render(<AppointmentDayView appointments={twoAppointments} />);
+
+    const listChildren = document.querySelectorAll("ol > li");
+    expect(listChildren).toHaveLength(2);
+  });
+
+  it("renders the time of each appointment", () => {
+    render(<AppointmentDayView appointments={twoAppointments} />);
+
+    const listChildren = document.querySelectorAll("li");
+    expect(listChildren[0].textContent).toEqual("12:00");
+    expect(listChildren[1].textContent).toEqual("13:00");
   })
 });
