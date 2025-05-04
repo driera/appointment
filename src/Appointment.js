@@ -16,6 +16,11 @@ export const AppointmentDayView = ({ appointments }) => {
           </li>
         ))}
       </ol>
+      {appointments.length === 0 ? (
+        <p>There are no appointments scheduled for today</p>
+      ) : (
+        <Appointment {...appointments[0]} />
+      )}
     </div>
   )
 };
